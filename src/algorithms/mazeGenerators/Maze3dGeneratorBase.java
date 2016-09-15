@@ -5,6 +5,8 @@ package algorithms.mazeGenerators;
  *
  */
 public abstract class Maze3dGeneratorBase implements Maze3dGenerator {
+	
+	protected boolean done = false;
 	/**
 	 * generates a maze
 	 * @param x length of x axis
@@ -25,5 +27,9 @@ public abstract class Maze3dGeneratorBase implements Maze3dGenerator {
 		this.generate(x,y,z);
 		Long endTime = System.currentTimeMillis();
 		return String.valueOf(endTime - startTime);
+	}
+	
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 }

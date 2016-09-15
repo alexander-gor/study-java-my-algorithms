@@ -19,4 +19,5 @@ public interface Searcher<T> {
      * @return amount of nodes evaluated
      */
 	public int getNumberOfNodesEvaluated();
+	public void setDone(boolean done);
 }

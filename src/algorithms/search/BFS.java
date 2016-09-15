@@ -15,7 +15,6 @@ public class BFS<T> extends CommonSearcher<T> {
 	private PriorityQueue<State<T>> openList = new PriorityQueue<State<T>>();
 	//to store the closed nodes
 	private Set<State<T>> closedList = new HashSet<State<T>>();
-	
 	@Override
 	/**
 	 * searches for a solution for the searchable problem
@@ -24,7 +23,7 @@ public class BFS<T> extends CommonSearcher<T> {
 		State<T> startState = s.getStartState();
 		openList.add(startState);
 		
-		while (!openList.isEmpty()) {
+		while (!done && !openList.isEmpty()) {
 			State<T> currState = openList.poll();
 			evaluatedNodes++;
 			closedList.add(currState);

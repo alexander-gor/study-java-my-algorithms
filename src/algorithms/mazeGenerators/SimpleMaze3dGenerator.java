@@ -55,7 +55,7 @@ public class SimpleMaze3dGenerator extends Maze3dGeneratorBase {
 		maze.setFree(start.x, start.y, start.z);
 		
 		int allWalls = (int)(x*y*z*WALL_RATIO);
-		for (int i = 0; i < allWalls; i++) {
+		for (int i = 0; i < allWalls && !done; i++) {
 			int xPos = rand.nextInt(x)+1;
 			int yPos = rand.nextInt(y)+1;
 			int zPos = rand.nextInt(z)+1;

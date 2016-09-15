@@ -57,6 +57,7 @@ public class State<T> implements Comparable<State<T>> {
 	 * equality check
 	 */
 	public boolean equals(Object obj) {
+		@SuppressWarnings("unchecked")
 		State<T> s = (State<T>)obj;
 		return s.value.equals(this.value);
 	}

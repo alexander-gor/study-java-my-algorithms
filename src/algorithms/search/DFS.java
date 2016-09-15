@@ -26,6 +26,8 @@ public class DFS<T> extends CommonSearcher<T> {
 	 */
 	private Solution<T> dfs(Searchable<T> s, State<T> currState) {
 		State<T> goal = s.getGoalState();
+		if (done)
+			return null;
 		//found exit, backtrace
 		if (currState.equals(goal)) {
 			return backTrace(currState);

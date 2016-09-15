@@ -21,5 +21,5 @@ public interface Maze3dGenerator {
 	 * @return amount of seconds it took to generate the maze
 	 */
 	String measureAlgorithmTime(int x, int y, int z);
-	
+	public void setDone(boolean done);
 }

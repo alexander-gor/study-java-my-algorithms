@@ -10,7 +10,7 @@ import java.util.List;
 public abstract class CommonSearcher<T> implements Searcher<T> {
 
 	protected int evaluatedNodes;
-
+	protected boolean done = false;
 	@Override
 	/**
 	 * returns number of nodes that were evaluated during the search
@@ -37,4 +37,7 @@ public abstract class CommonSearcher<T> implements Searcher<T> {
 		return sol;
 	}
 
+	public void setDone(boolean done) {
+		this.done = done;
+	}
 }

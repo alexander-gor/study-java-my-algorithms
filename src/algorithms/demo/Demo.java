@@ -34,10 +34,12 @@ public class Demo {
 		MazeAdapter adapter = new MazeAdapter(maze);
 		BFS<Position> bfs = new BFS<Position>();
 		Solution<Position> solution = bfs.search(adapter);
+		System.out.println(solution);
 		System.out.println(bfs.getNumberOfNodesEvaluated());
 		
 		DFS<Position> dfs = new DFS<Position>();
 		Solution<Position> solutionDfs = dfs.search(adapter);
+		System.out.println(solutionDfs);
 		System.out.println(dfs.getNumberOfNodesEvaluated());
 		
 		// save it to a file
