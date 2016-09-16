@@ -272,7 +272,10 @@ public class Maze3d {
 		return sb.toString();
 	}
 	
-	
+	/**
+	 * c'tor from byte array
+	 * @param arr byte array
+	 */
 	public Maze3d(byte[] arr) {
 		int k = 0;
 		this.x = arr[k++];
@@ -292,7 +295,10 @@ public class Maze3d {
 			}
 		}
 	}
-	
+	/**
+	 * convert to byte array for storage
+	 * @return byte array representation of the maze
+	 */
 	public byte[] toByteArray() {
 		ArrayList<Byte> arr = new ArrayList<Byte>();
 		arr.add((byte)x);
