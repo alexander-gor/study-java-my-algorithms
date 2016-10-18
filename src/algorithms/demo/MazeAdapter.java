@@ -28,9 +28,12 @@ public class MazeAdapter implements Searchable<Position> {
 	 * getter for the start Position
 	 */
 	public State<Position> getStartState() {
-		Position startPos = maze.getStartPosition();
-		State<Position> startState = new State<Position>(startPos);
-		return startState;	
+		if (maze != null ) {
+			Position startPos = maze.getStartPosition();
+			State<Position> startState = new State<Position>(startPos);
+			return startState;	
+		}
+		return null;
 	}
 
 	@Override
