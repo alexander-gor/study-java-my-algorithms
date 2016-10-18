@@ -31,38 +31,44 @@ public class BFS<T> extends CommonSearcher<T> {
 					evaluatedNodes++;
 					
 					State<T> goalState = s.getGoalState();
-					//found exit, backtrace
-					if (currState.equals(goalState)) {
-						return backTrace(currState);
-					}
-					
-					List<State<T>> neighbors = s.getAllPossibleStates(currState);
-					
-					for (State<T> neighbor : neighbors) {
-						
-						if (!openList.contains(neighbor) && !closedList.contains(neighbor)) { //need to evaluate this node, add to openList 
-							neighbor.setCameFrom(currState);
-							neighbor.setCost(currState.getCost() + s.getMoveCost(currState, neighbor));
-							openList.add(neighbor);
+					if (goalState != null && goalState.getValue() != null) {
+						//found exit, backtrace
+						if (currState.equals(goalState)) {
+							return backTrace(currState);
 						}
-						else {//node was evalated
-							double newPathCost = currState.getCost() + s.getMoveCost(currState, neighbor);
-							if (neighbor.getCost() > newPathCost) {//check if new cost is better
-								neighbor.setCost(newPathCost);
+						
+						List<State<T>> neighbors = s.getAllPossibleStates(currState);
+						
+						for (State<T> neighbor : neighbors) {
+							
+							if (!openList.contains(neighbor) && !closedList.contains(neighbor)) { //need to evaluate this node, add to openList 
 								neighbor.setCameFrom(currState);
-								
-								if (!openList.contains(neighbor)) {//add to evaluation list
-									openList.add(neighbor);
-								} 
-								else { // must notify the priority queue about the change of cost
-									openList.remove(neighbor);
-									openList.add(neighbor);
-								}
+								neighbor.setCost(currState.getCost() + s.getMoveCost(currState, neighbor));
+								openList.add(neighbor);
 							}
-						}			
-					}	
+							else {//node was evalated
+								double newPathCost = currState.getCost() + s.getMoveCost(currState, neighbor);
+								if (neighbor.getCost() > newPathCost) {//check if new cost is better
+									neighbor.setCost(newPathCost);
+									neighbor.setCameFrom(currState);
+									
+									if (!openList.contains(neighbor)) {//add to evaluation list
+										openList.add(neighbor);
+									} 
+									else { // must notify the priority queue about the change of cost
+										openList.remove(neighbor);
+										openList.add(neighbor);
+									}
+								}
+							}			
+						}
+					}
+					else
+						return null;
+						
 				}
-				return null;
+				else
+					return null;
 			}	
 		}
 		return null;
