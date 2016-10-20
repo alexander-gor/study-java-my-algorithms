@@ -22,11 +22,12 @@ import io.MyDecompressorInputStream;
  *
  */
 public class Demo {
-
+	private static final String RESOURCESDIR = "Resources\\";
 	/**
 	 * run the demo
 	 */
 	public void run() {		
+		
 		Maze3dGenerator generator = new GrowingTreeGenerator();
 		Maze3d maze = generator.generate(10, 10, 10);
 		System.out.println(maze);
@@ -46,7 +47,7 @@ public class Demo {
 		OutputStream out;
 		try {
 			out = new MyCompressorOutputStream(
-					new FileOutputStream("1.maz"));
+					new FileOutputStream(RESOURCESDIR + "1.maz"));
 			byte[] arr = maze.toByteArray();
 			
 			out.write(arr.length);
@@ -64,7 +65,7 @@ public class Demo {
 		InputStream in;
 		try {
 			in = new MyDecompressorInputStream(
-				new FileInputStream("1.maz"));
+				new FileInputStream(RESOURCESDIR + "1.maz"));
 			int size = in.read();			
 			byte b[]=new byte[size];
 			in.read(b);
